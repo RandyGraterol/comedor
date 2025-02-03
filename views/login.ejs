@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Inicio</title>
+	<link rel="stylesheet" type="text/css" href="/Css/login2.css">
+	<script src='/Js/alertConfig.js'></script>
+</head>
+<body>
+<div class="container" id="container">
+
+	<div class="form-container sign-up-container">
+		<form method="POST" action="/crearUsuario/client" id='formularioCreate'>
+			<img class="avatar" src="/icon/user-interface.png">
+			<h1>Crear cuenta</h1>
+			<span>Usa tu dirección de correo electronico para registrarte</span>
+			<input class="form-control" id="nombre" name='nombre' type="text" placeholder="Ingresa tu nombre"/>
+			<input class="form-control" name='email' id="email" type="email" placeholder="Ingresa tu email"/>
+			<input class="form-control" name="carrera" id="carrera" type="text" placeholder="Ingresa carrera"/>
+			<input class="form-control" name="password" id="password" type="text" placeholder="Ingresa la contraseña"/>
+			<button>Crear cuenta</button>
+		</form>
+	</div>
+
+	<div class="form-container sign-in-container">
+		<form id="login">
+			<img class="avatar" src="/icon/user-interface.png">
+			<h1>Iniciar Sesion</h1>
+			<span>¡Ingresa tus credenciales para iniciar sesion!</span>
+			<input type="email" id="email2" placeholder="Ingrese Email" />
+			<input type="text" id="password2" placeholder="Ingrese Contraseña" />
+			<a href="#">¿Haz olvidado tu contraseña?</a>
+			<button>Acceder</button>
+		</form>
+	</div>
+
+	<div class="overlay-container">
+		<div class="overlay">
+
+			<div class="overlay-panel overlay-left">
+				<img class="logo" src="/icon/food-order.png">
+				<h1>¡Iniciar Sesion!</h1>
+				<p>¡Inicia sesion en nuestro sitio web!</p>
+				<button class="ghost" id="signIn">Iniciar Sesion</button>
+			</div>
+
+			<div class="overlay-panel overlay-right">
+				<img class="logo" src="/icon/food-order.png">
+				<h1>Hola, Amigo!</h1>
+				<p>Presiona el boton para registrarte</p>
+				<button class="ghost" id="signUp">Crear cuenta</button>
+			</div>
+
+		</div>
+	</div>
+
+</div>
+
+<script type="text/javascript">
+	const signUpButton = document.getElementById("signUp");
+const signInButton = document.getElementById("signIn");
+const container = document.getElementById("container");
+
+signUpButton.addEventListener("click", () => {
+	container.classList.add("right-panel-active");
+});
+signInButton.addEventListener("click", () => {
+	container.classList.remove("right-panel-active");
+});
+
+</script>
+
+<script>
+const login = document.querySelector('#login');
+login.addEventListener('submit',e=>{
+	e.preventDefault();
+
+	const email2 = document.querySelector('#email2').value;
+	const password2 = document.querySelector('#password2').value;
+     
+	fetch('/loginPost',{
+    method:'POST',
+    headers:{
+    	"Content-Type":"application/json"
+    },
+    body:JSON.stringify({email:email2,password:password2})
+	})
+	.then(res=>res.json())
+	.then(res=>{
+		if(res.status){
+        window.location.href='/dashboar';
+		}else{
+          Swal.fire('Contraseña o correo incorrecto.');
+		}
+	})
+});
+</script>
+
+</body>
+</html>

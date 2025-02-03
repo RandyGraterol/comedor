@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Control</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header class="bg-dark text-white text-center py-3">
+        <h1>Panel de Administrador</h1>
+    </header>
+
+    <div class="container-fluid">
+        <div class="row">
+          <%-include('nav')-%>
+        <main class="col-md-10 p-4">
+            <%- include('dashboarGeneral') -%>
+            
+            <h2>Listado de Estudiantes</h2>
+            <div class="containerTable">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nombre</th>
+                        <th>Email</th>
+                        <th>Carrera</th>
+                        <th>Contraseña</th>
+                        <th>status</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="usuarioTableBody">
+
+                        <% data.forEach(user=>{ %>
+                        <tr>
+                        <td><%=user.id%></td>
+                        <td><%=user.nombre%></td>
+                        <td><%=user.email%></td>
+                        <td><%=user.carrera%></td>
+                        <td><%=user.password%></td>
+                        <td><%=user.status%></td>
+                         <td>
+                             <a href="/update/<%=user.id%>"><img class="imgOpcion" src="/icon/arrow.png" alt=""></a>
+
+                              <a href="/delete/<%=user.id%>">
+                                <img class="imgOpcion" src="/icon/trash.png" alt=""></a>
+                        </td>
+                        </tr>
+                        <% }); %>
+             
+
+        </tbody>
+    </table>
+    </div>
+    <!-- Formulario para Agregar Usuario -->
+    <h2>Agregar Estudiante</h2>
+
+    <div class="card mb-3" id="reporte">
+        <form action="/crearUsuario/admin" method="POST">
+            <div class="inputD">
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" name="nombre" required>
+            </div>
+            <div class="inputD">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="inputD">
+                <label for="telefono">carrera</label>
+                <input type="tel" id="carrera" name="carrera" required>
+            </div>
+            <div class="inputD">
+                <label for="password">Contraseña</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button class="btn btn-primary">Agregar Estudiante</button>
+        </form>
+    </div>
+</main>
+</div>
+</div>
+
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.bundle.min.js"></script>
+<script src="js/panel.js"></script>
+<script src="js/usuarios.js"></script>
+</body>
+</html>

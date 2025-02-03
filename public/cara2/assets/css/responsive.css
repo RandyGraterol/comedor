@@ -1,0 +1,60 @@
+@media (max-width: 374px) {
+    /* Aquí van tus estilos específicos para móviles pequeños */
+      .containerParticipantes{
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap:1rem;
+    }span{
+        width:100%;
+    }.section-heading{
+        padding:0 !important;
+    }.sobreNosotros{
+        margin-top:4rem;
+    }
+}
+/* Móviles medianos (375px - 414px) */
+@media (min-width: 375px) and (max-width: 414px) {
+    /* Aquí van tus estilos específicos para móviles medianos */
+    /* Aquí van tus estilos específicos para móviles grandes */
+    /*REDMI NOTE 13 PRO PLUS*/
+      .containerParticipantes{
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap:1rem;
+    }span{
+        width:100%;
+    }.section-heading{
+        padding:0 !important;
+    }.sobreNosotros{
+        margin-top:4rem;
+    }
+}
+/* Móviles grandes (415px - 599px)*/
+@media (min-width: 415px) and (max-width: 599px) {
+    /* Aquí van tus estilos específicos para móviles grandes */
+    /* Aquí van tus estilos específicos para móviles grandes */
+    /*IPHONE 15 PRO MAX*/
+    .containerParticipantes{
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap:1rem;
+    }span{
+        width:100%;
+    }.section-heading{
+        padding:0 !important;
+    }.sobreNosotros{
+        margin-top:4rem;
+    }
+}
+/* Tabletas en orientación vertical (600px - 767px) */
+@media (min-width: 600px) and (max-width: 767px) {
+    /* Aquí van tus estilos específicos para tabletas en orientación vertical*/
+    /* Aquí van tus estilos específicos para móviles grandes */
+
+}
